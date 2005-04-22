@@ -10,6 +10,7 @@ Source0:        ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Prereq:         /sbin/install-info
+BuildRequires:  gmp-devel
 
 %description
 A collection of C++ math classes and functions, which are designed for
@@ -39,18 +40,15 @@ make
 %install
 rm -rf ${RPM_BUILD_ROOT}
 %makeinstall
-gzip -9nf ${RPM_BUILD_ROOT}%{_infodir}/cln.info*
-mkdir -p ${RPM_BUILD_ROOT}%{_defaultdocdir}/%{name}-devel-%{version}
-mv ${RPM_BUILD_ROOT}%{_datadir}/dvi/cln.dvi ${RPM_BUILD_ROOT}%{_datadir}/html ${RPM_BUILD_ROOT}%{_defaultdocdir}/%{name}-devel-%{version}
+mkdir -p ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
+mv ${RPM_BUILD_ROOT}%{_datadir}/dvi/cln.dvi ${RPM_BUILD_ROOT}%{_datadir}/html ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
 
-%post
-/sbin/ldconfig
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %post devel
 /sbin/install-info --section="Math" %{_infodir}/cln.info.gz %{_infodir}/dir
@@ -67,18 +65,21 @@ fi
 
 %files devel
 %defattr(-,root,root)
-%{_defaultdocdir}/%{name}-devel-%{version}
+%{_docdir}/%{name}-devel-%{version}
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/cln.pc
-%{_includedir}/cln/*
+%{_includedir}/cln/
 %{_infodir}/*.info*
 %{_mandir}/man1/cln-config.1*
 %{_bindir}/cln-config
 %{_datadir}/aclocal/cln.m4
 
 %changelog
+* Fri Apr 22 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
+- Added gmp-devel in BuildRequires, fixes in %files
+
 * Mon Mar 21 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
 - Adapted spec file for Fedora Extras
 
