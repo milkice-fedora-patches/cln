@@ -9,7 +9,8 @@ URL:            http://www.ginac.de/CLN/
 Source0:        ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Prereq:         /sbin/install-info
+Requires(post): /sbin/install-info
+Requires(preun): /sbin/install-info
 BuildRequires:  gmp-devel
 
 %description
@@ -20,7 +21,7 @@ syntax.
 %package devel
 Summary:        Development files for programs using the CLN library
 Group:          Development/Libraries
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 
 %description devel
 A collection of C++ math classes and functions, which are designed for
@@ -51,11 +52,11 @@ rm -rf ${RPM_BUILD_ROOT}
 %postun -p /sbin/ldconfig
 
 %post devel
-/sbin/install-info --section="Math" %{_infodir}/cln.info.gz %{_infodir}/dir
+/sbin/install-info --section="Math" %{_infodir}/cln.info.gz %{_infodir}/dir 2>/dev/null || :
 
 %preun devel
 if [ "$1" = 0 ]; then
-  /sbin/install-info --delete %{_infodir}/cln.info.gz %{_infodir}/dir
+  /sbin/install-info --delete %{_infodir}/cln.info.gz %{_infodir}/dir 2>/dev/null || :
 fi
 
 %files
@@ -79,6 +80,7 @@ fi
 %changelog
 * Fri Apr 22 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
 - Added gmp-devel in BuildRequires, fixes in %files
+- Added %{release} to Requires for devel
 
 * Mon Mar 21 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
 - Adapted spec file for Fedora Extras
