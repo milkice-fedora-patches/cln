@@ -79,8 +79,8 @@ fi
 
 %changelog
 * Fri Apr 22 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
-- Added gmp-devel in BuildRequires, fixes in %files
-- Added %{release} to Requires for devel
+- Added gmp-devel in BuildRequires, fixes in files
+- Added release to name in Requires for devel
 
 * Mon Mar 21 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
 - Adapted spec file for Fedora Extras
