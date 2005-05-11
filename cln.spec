@@ -37,7 +37,7 @@ the CLN library.
 %build
 %configure
 make
-
+:
 %install
 rm -rf ${RPM_BUILD_ROOT}
 %makeinstall
@@ -68,7 +68,6 @@ fi
 %defattr(-,root,root)
 %{_docdir}/%{name}-devel-%{version}
 %{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
@@ -76,8 +75,12 @@ fi
 %{_mandir}/man1/cln-config.1*
 %{_bindir}/cln-config
 %{_datadir}/aclocal/cln.m4
+%exclude %{_libdir}/*.la
 
 %changelog
+* Wed May 11 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
+- Excluded .la file
+
 * Fri Apr 22 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-1
 - Added gmp-devel in BuildRequires, fixes in files
 - Added release to name in Requires for devel
