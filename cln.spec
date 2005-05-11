@@ -37,7 +37,7 @@ the CLN library.
 %build
 %configure
 make
-:
+
 %install
 rm -rf ${RPM_BUILD_ROOT}
 %makeinstall
