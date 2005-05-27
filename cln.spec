@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -21,7 +21,7 @@ syntax.
 %package devel
 Summary:        Development files for programs using the CLN library
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release} gmp-devel
 
 %description devel
 A collection of C++ math classes and functions, which are designed for
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Fri May 27 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-3
+- Added gmp-devel to Requires for devel
+
 * Fri May 20 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-2
 - Added dist tag.
 
