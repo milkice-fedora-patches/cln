@@ -1,12 +1,13 @@
 Name:           cln
 Version:        1.1.9
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPL
 URL:            http://www.ginac.de/CLN/
 Source0:        ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
+Patch0:         cln-1.1.9-string.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -33,6 +34,7 @@ the CLN library.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %configure
@@ -78,6 +80,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Jun 13 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-4
+- Patched include/cln/string.h to correctly compile on gcc-c++-4.0.0-9
+
 * Fri May 27 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-3
 - Added gmp-devel to Requires for devel
 
