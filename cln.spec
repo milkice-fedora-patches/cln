@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.9
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -80,6 +80,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Jun 13 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-5
+- Rebuild
+
 * Mon Jun 13 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-4
 - Patched include/cln/string.h to correctly compile on gcc-c++-4.0.0-9
 
