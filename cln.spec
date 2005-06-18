@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.9
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -80,7 +80,7 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
-* Fri Jun 17 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-6
+* Sat Jun 18 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-7
 - Rebuild
 
 * Mon Jun 13 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.9-4
