@@ -1,5 +1,5 @@
 Name:           cln
-Version:        1.1.10
+Version:        1.1.11
 Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-1
+- New upstream release.
+
 * Mon Oct 31 2005 Quentin Spencer <qspencer@users.sf.net> 1.1.10-1
 - New upstream release, incorporating previous patch.
 
