@@ -1,12 +1,12 @@
 Name:           cln
 Version:        1.1.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPL
 URL:            http://www.ginac.de/CLN/
-Source0:        ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
+Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-2
+- Update source URL.
+
 * Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-1
 - New upstream release.
 
