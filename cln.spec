@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.11
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -76,8 +76,12 @@ fi
 %{_bindir}/cln-config
 %{_datadir}/aclocal/cln.m4
 %exclude %{_libdir}/*.la
+%exclude %{_infodir}/dir
 
 %changelog
+* Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-3
+- Exclude /usr/share/info/dir from package (bug 178660).
+
 * Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-2
 - Update source URL.
 
