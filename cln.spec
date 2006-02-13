@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.11
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -35,8 +35,8 @@ the CLN library.
 %setup -q
 
 %build
-%configure
-make
+%configure --disable-static
+make %{?_smp_mflags}
 
 %install
 rm -rf ${RPM_BUILD_ROOT}
@@ -75,10 +75,13 @@ fi
 %{_mandir}/man1/cln-config.1*
 %{_bindir}/cln-config
 %{_datadir}/aclocal/cln.m4
-%exclude %{_libdir}/*.a
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Feb 13 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-5
+- Disable static build.
+- Enable parallel build.
+
 * Mon Feb 13 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-4
 - Rebuild for Fedora Extras 5.
 - Remove /usr/share/info/dir after install.
