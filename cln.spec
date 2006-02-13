@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.11
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -43,6 +43,7 @@ rm -rf ${RPM_BUILD_ROOT}
 %makeinstall
 mkdir -p ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
 mv ${RPM_BUILD_ROOT}%{_datadir}/dvi/cln.dvi ${RPM_BUILD_ROOT}%{_datadir}/html ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
+rm -f ${RPM_BUILD_ROOT}%{_infodir}/dir
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
@@ -67,7 +68,6 @@ fi
 %files devel
 %defattr(-,root,root)
 %{_docdir}/%{name}-devel-%{version}
-%{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
@@ -75,10 +75,15 @@ fi
 %{_mandir}/man1/cln-config.1*
 %{_bindir}/cln-config
 %{_datadir}/aclocal/cln.m4
+%exclude %{_libdir}/*.a
 %exclude %{_libdir}/*.la
-%exclude %{_infodir}/dir
 
 %changelog
+* Mon Feb 13 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-4
+- Rebuild for Fedora Extras 5.
+- Remove /usr/share/info/dir after install.
+- Exclude static libs.
+
 * Mon Jan 16 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-3
 - Exclude /usr/share/info/dir from package (bug 178660).
 
