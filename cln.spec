@@ -1,6 +1,6 @@
 Name:           cln
-Version:        1.1.11
-Release:        5%{?dist}
+Version:        1.1.13
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Thu Feb 17 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.13-1
+- New release.
+
 * Mon Feb 13 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.11-5
 - Disable static build.
 - Enable parallel build.
