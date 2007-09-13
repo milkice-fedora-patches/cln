@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.13
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -21,7 +21,7 @@ syntax.
 %package devel
 Summary:        Development files for programs using the CLN library
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release} gmp-devel
+Requires:       %{name} = %{version}-%{release} gmp-devel pkgconfig
 
 %description devel
 A collection of C++ math classes and functions, which are designed for
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Thu Sep 13 2007 Quentin Spencer <qspencer@users.sf.net> 1.1.13-4
+- Add pkgconfig as a dependency of -devel.
+
 * Tue Aug 21 2007 Quentin Spencer <qspencer@users.sf.net> 1.1.13-3
 - Rebuild for F8.
 
