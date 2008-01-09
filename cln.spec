@@ -4,7 +4,7 @@ Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
-License:        GPL
+License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -21,7 +21,7 @@ syntax.
 %package devel
 Summary:        Development files for programs using the CLN library
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release} gmp-devel
+Requires:       %{name} = %{version}-%{release} gmp-devel pkgconfig
 
 %description devel
 A collection of C++ math classes and functions, which are designed for
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Wed Jan  9 2008 Quentin Spencer <qspencer@users.sf.net> 1.1.13-3
+- Port changes in devel and update license tag.
+
 * Mon Aug 28 2006 Quentin Spencer <qspencer@users.sf.net> 1.1.13-2
 - Rebuild for FC-6.
 
