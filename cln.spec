@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.1.13
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 1.1.13-5
+- Autorebuild for GCC 4.3
+
 * Thu Sep 13 2007 Quentin Spencer <qspencer@users.sf.net> 1.1.13-4
 - Add pkgconfig as a dependency of -devel.
 
