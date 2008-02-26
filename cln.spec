@@ -1,10 +1,10 @@
 Name:           cln
-Version:        1.1.13
-Release:        5%{?dist}
+Version:        1.2.0
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
-License:        GPL
+License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -72,12 +72,13 @@ fi
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
 %{_infodir}/*.info*
-%{_mandir}/man1/cln-config.1*
-%{_bindir}/cln-config
-%{_datadir}/aclocal/cln.m4
 %exclude %{_libdir}/*.la
 
 %changelog
+* Mon Feb 25 2008 Quentin Spencer <qspencer@users.sf.net> 1.2.0-1
+- Update to 1.2.0.
+- Update License tag.
+
 * Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 1.1.13-5
 - Autorebuild for GCC 4.3
 
