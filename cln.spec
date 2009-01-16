@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.2.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -75,6 +75,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Fri Jan 16 2009 Rakesh Pandit <rakesh@fedoraproject.org> 1.2.2-2
+- Bump to solve dependency for ginac-devel
+
 * Tue Apr 29 2008 Quentin Spencer <qspencer@users.sf.net> 1.2.2-1
 - Update to 1.2.2.
 
