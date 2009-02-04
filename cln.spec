@@ -1,12 +1,13 @@
 Name:           cln
 Version:        1.2.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
+Patch0:		cln-upstream_gcc44_fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -33,6 +34,7 @@ the CLN library.
 
 %prep
 %setup -q
+%patch0 -p1 -b .gcc44
 
 %build
 %configure --disable-static
@@ -75,6 +77,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Wed Feb 04 2009 Deji Akingunola <dakingun@gmail.com> - 1.2.2-3
+- Add upstream patch to build with gcc-4.4
+
 * Fri Jan 16 2009 Rakesh Pandit <rakesh@fedoraproject.org> 1.2.2-2
 - Bump to solve dependency for ginac-devel
 
