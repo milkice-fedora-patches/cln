@@ -13,7 +13,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
 BuildRequires:  gmp-devel
-BuildRequires:  texi2html
+BuildRequires:  texi2html texinfo-tex
 
 %description
 A collection of C++ math classes and functions, which are designed for
