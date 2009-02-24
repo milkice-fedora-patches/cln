@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.2.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -78,6 +78,9 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.2-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Wed Feb 04 2009 Deji Akingunola <dakingun@gmail.com> - 1.2.2-3
 - Add upstream patch to build with gcc-4.4
 
