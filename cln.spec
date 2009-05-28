@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.2.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -8,6 +8,7 @@ License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 Patch0:		cln-upstream_gcc44_fix.patch
+Patch1:		cln-1.2.2-s390x.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -36,6 +37,7 @@ the CLN library.
 %prep
 %setup -q
 %patch0 -p1 -b .gcc44
+%patch1 -p1 -b .s390x
 
 %build
 %configure --disable-static
@@ -50,6 +52,9 @@ rm -f ${RPM_BUILD_ROOT}%{_infodir}/dir
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
+
+%check
+make %{_smp_mflags} check
 
 %post -p /sbin/ldconfig
 
@@ -78,6 +83,10 @@ fi
 %exclude %{_libdir}/*.la
 
 %changelog
+* Thu May 28 2009 Dan Horak <dan[at]danny.cz> - 1.2.2-5
+- fix build on s390x
+- run the test-suite during build
+
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
