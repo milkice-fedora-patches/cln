@@ -1,14 +1,13 @@
 Name:           cln
-Version:        1.2.2
-Release:        5%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch0:		cln-upstream_gcc44_fix.patch
-Patch1:		cln-1.2.2-s390x.patch
+Patch0:         cln-1.2.2-s390x.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -36,25 +35,30 @@ the CLN library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .gcc44
-%patch1 -p1 -b .s390x
+%patch0 -p1 -b .s390x
 
 %build
 %configure --disable-static
 make %{?_smp_mflags}
+make pdf
+make html
 
 %install
-rm -rf ${RPM_BUILD_ROOT}
-%makeinstall
-mkdir -p ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
-mv ${RPM_BUILD_ROOT}%{_datadir}/dvi/cln.dvi ${RPM_BUILD_ROOT}%{_datadir}/html ${RPM_BUILD_ROOT}%{_docdir}/%{name}-devel-%{version}
-rm -f ${RPM_BUILD_ROOT}%{_infodir}/dir
+rm -rf %{buildroot}
+make DESTDIR=%{buildroot} install
 
-%clean
-rm -rf ${RPM_BUILD_ROOT}
+mkdir -p %{buildroot}%{_docdir}/%{name}-devel-%{version}
+cp -p doc/cln.pdf doc/cln.html %{buildroot}%{_docdir}/%{name}-devel-%{version}/
+
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+rm -f %{buildroot}%{_infodir}/dir
+rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
 
 %check
 make %{_smp_mflags} check
+
+%clean
+rm -rf %{buildroot}
 
 %post -p /sbin/ldconfig
 
@@ -70,19 +74,21 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc COPYING ChangeLog FILES NEWS README TODO*
+%doc COPYING ChangeLog NEWS README TODO*
 %{_libdir}/*.so.*
 
 %files devel
 %defattr(-,root,root)
-%{_docdir}/%{name}-devel-%{version}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
 %{_infodir}/*.info*
-%exclude %{_libdir}/*.la
+%{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Thu Jul 02 2009 Deji Akingunola <dakingun@gmail.com> - 1.3.0-1
+- Update to latest upstream release 1.3.0
+
 * Thu May 28 2009 Dan Horak <dan[at]danny.cz> - 1.2.2-5
 - fix build on s390x
 - run the test-suite during build
