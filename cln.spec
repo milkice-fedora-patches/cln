@@ -1,13 +1,14 @@
 Name:           cln
-Version:        1.3.0
-Release:        2%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch0:         cln-1.2.2-s390x.patch
+Patch1:         cln-1.3.1-s390x.patch
+Patch2:         cln-arm-preprocessor-fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires(post): /sbin/install-info
@@ -35,7 +36,8 @@ the CLN library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .s390x
+%patch1 -p0 -b .s390x
+%patch2 -p0 -b .fix
 
 %build
 %configure --disable-static
@@ -74,7 +76,7 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc COPYING ChangeLog NEWS README TODO*
+%doc COPYING NEWS README TODO
 %{_libdir}/*.so.*
 
 %files devel
@@ -86,6 +88,10 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Thu Jul 01 2010 Deji Akingunola <dakingun@gmail.com> - 1.3.1-1
+- New upstream version
+- build for EPEL6
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
