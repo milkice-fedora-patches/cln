@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -88,6 +88,9 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Tue Dec 29 2009 Deji Akingunola <dakingun@gmail.com> - 1.3.1-1
 - New upstream version
 - Apply patch by Jitesh Shah to fix build on arm
