@@ -46,7 +46,7 @@ the CLN library.
 %patch2 -p0 -b .fix
 
 %build
-%configure --disable-static CXXFLAGS="%{optflags} %{XFLAGS}"
+%configure --disable-static CXXFLAGS="%{XFLAGS}"
 make %{?_smp_mflags}
 make pdf
 make html
