@@ -35,7 +35,9 @@ This package is necessary if you wish to develop software based on
 the CLN library.
 
 %ifarch %{arm}
-%global XFLAGS -DNO_ASM
+%global XFLAGS %{optflags} -DNO_ASM
+%else
+%global XFLAGS %{optflags}
 %endif
 
 %prep
