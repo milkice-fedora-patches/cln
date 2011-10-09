@@ -1,6 +1,6 @@
 Name:           cln
-Version:        1.3.1
-Release:        2%{?dist}
+Version:        1.3.2
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -34,13 +34,17 @@ syntax.
 This package is necessary if you wish to develop software based on
 the CLN library.
 
+%ifarch %{arm}
+%global XFLAGS -DNO_ASM
+%endif
+
 %prep
 %setup -q
 %patch1 -p0 -b .s390x
 %patch2 -p0 -b .fix
 
 %build
-%configure --disable-static
+%configure --disable-static CXXFLAGS="%{optflags} %{XFLAGS}"
 make %{?_smp_mflags}
 make pdf
 make html
@@ -88,6 +92,10 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Sun Oct 09 2011 Deji Akingunola <dakingun@gmail.com> - 1.3.2-1
+- New upstream version
+- Add -DNO_ASM flag for arm archs.
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
