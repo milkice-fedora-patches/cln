@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.2
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -94,6 +94,9 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Mon Oct 10 2011 Peter Schiffer <pschiffe@redhat.com> - 1.3.2-1.1
+- rebuild with new gmp
+
 * Sun Oct 09 2011 Deji Akingunola <dakingun@gmail.com> - 1.3.2-1
 - New upstream version
 - Add -DNO_ASM flag for arm archs.
