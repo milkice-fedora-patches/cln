@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -46,7 +46,7 @@ the CLN library.
 %patch2 -p0 -b .fix
 
 %build
-%configure --disable-static CXXFLAGS="%{XFLAGS}"
+%configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
 make %{?_smp_mflags}
 make pdf
 make html
@@ -94,6 +94,9 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Wed Oct 19 2011 Deji Akingunola <dakingun@gmail.com> - 1.3.2-2
+- Also add -DNO_ASM to CFLAGS for arm archs.
+
 * Sun Oct 09 2011 Deji Akingunola <dakingun@gmail.com> - 1.3.2-1
 - New upstream version
 - Add -DNO_ASM flag for arm archs.
