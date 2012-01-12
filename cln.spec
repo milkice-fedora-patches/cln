@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.2
-Release:        2%{?dist}.1
+Release:        3%{?dist}.1
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -94,6 +94,9 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-3.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Thu Oct 20 2011 Marcela Mašláňová <mmaslano@redhat.com> - 1.3.2-2.1
 - rebuild with new gmp without compat lib
 
