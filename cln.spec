@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.2
-Release:        3%{?dist}.1
+Release:        4%{?dist}.1
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -94,6 +94,9 @@ fi
 %{_docdir}/%{name}-devel-%{version}
 
 %changelog
+* Tue Feb 28 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-4.1
+- Rebuilt for c++ ABI breakage
+
 * Thu Jan 12 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-3.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
