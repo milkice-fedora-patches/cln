@@ -216,5 +216,5 @@ fi
 * Wed Nov  6 2002 Christian Bauer <Christian.Bauer@uni-mainz.de>
   Added HTML and DVI docs to devel package
 
-* Tue Nov  5 2001 Christian Bauer <Christian.Bauer@uni-mainz.de>
+* Mon Nov  5 2001 Christian Bauer <Christian.Bauer@uni-mainz.de>
   Added Packager
