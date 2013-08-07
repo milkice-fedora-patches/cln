@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.2
-Release:        7%{?dist}.1
+Release:        8%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -55,9 +55,6 @@ make html
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
-mkdir -p %{buildroot}%{_docdir}/%{name}-devel-%{version}
-cp -p doc/cln.pdf doc/cln.html %{buildroot}%{_docdir}/%{name}-devel-%{version}/
-
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 rm -f %{buildroot}%{_infodir}/dir
 rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
@@ -91,9 +88,12 @@ fi
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
 %{_infodir}/*.info*
-%{_docdir}/%{name}-devel-%{version}
+%doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Tue Aug 06 2013 Deji Akingunola <dakingun@gmail.com> - 1.3.2-8
+- Package the devel documents in unversioned docdir (BZ #993702)
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-7.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
