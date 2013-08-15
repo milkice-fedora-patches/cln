@@ -91,9 +91,6 @@ fi
 * Tue Aug 06 2013 Deji Akingunola <dakingun@gmail.com> - 1.3.2-8
 - Package the devel documents in unversioned docdir (BZ #993702)
 
-* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-7.1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
-
 * Wed Feb 13 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.2-6.1
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
