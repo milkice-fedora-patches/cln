@@ -1,15 +1,13 @@
 Name:           cln
-Version:        1.3.2
-Release:        8%{?dist}
+Version:        1.3.3
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch1:         cln-1.3.1-s390x.patch
-Patch2:         cln-arm-preprocessor-fix.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch1:         cln-arm-preprocessor-fix.patch
 
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
@@ -42,8 +40,7 @@ the CLN library.
 
 %prep
 %setup -q
-%patch1 -p0 -b .s390x
-%patch2 -p0 -b .fix
+%patch1 -p0 -b .fix
 
 %build
 %configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
@@ -61,9 +58,6 @@ rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
 
 %check
 make %{_smp_mflags} check
-
-%clean
-rm -rf %{buildroot}
 
 %post -p /sbin/ldconfig
 
@@ -91,6 +85,9 @@ fi
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Wed Aug 14 2013 Deji Akingunola <dakingun@gmail.com> - 1.3.3-1
+- New upstream version
+
 * Tue Aug 06 2013 Deji Akingunola <dakingun@gmail.com> - 1.3.2-8
 - Package the devel documents in unversioned docdir (BZ #993702)
 
