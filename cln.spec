@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 
 Group:          System Environment/Libraries
@@ -8,6 +8,7 @@ License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 Patch1:         cln-arm-preprocessor-fix.patch
+Patch2:         cln-add-aarch64.patch
 
 Requires(post): /sbin/install-info
 Requires(preun): /sbin/install-info
@@ -41,6 +42,7 @@ the CLN library.
 %prep
 %setup -q
 %patch1 -p0 -b .fix
+%patch2 -p1 -b .aarch64
 
 %build
 %configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
@@ -85,6 +87,9 @@ fi
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Wed Apr 23 2014 Marcin Juszkiewicz <mjuszkiewicz@redhat.com> - 1.3.3-2
+- Add AArch64 definitions.
+
 * Wed Aug 14 2013 Deji Akingunola <dakingun@gmail.com> - 1.3.3-1
 - New upstream version
 
