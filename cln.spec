@@ -5,7 +5,6 @@ Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch2:         cln-add-aarch64.patch
 BuildRequires:  gmp-devel
 BuildRequires:  texi2html
 %if 0%{?fedora} && 0%{?fedora} > 20
@@ -41,7 +40,6 @@ the CLN library.
 
 %prep
 %setup -q
-#patch2 -p1 -b .aarch64
 
 %build
 %configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
