@@ -1,31 +1,28 @@
 Name:           cln
-Version:        1.3.3
-Release:        4%{?dist}
+Version:        1.3.4
+Release:        1%{?dist}
 Summary:        Class Library for Numbers
-
-Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch1:         cln-arm-preprocessor-fix.patch
 Patch2:         cln-add-aarch64.patch
-
-Requires(post): /sbin/install-info
-Requires(preun): /sbin/install-info
 BuildRequires:  gmp-devel
-BuildRequires:  texi2html texinfo-tex
+BuildRequires:  texi2html
+BuildRequires:  texinfo-tex
+Requires(post): /sbin/install-info
+Requires(preun):/sbin/install-info
 
 %description
 A collection of C++ math classes and functions, which are designed for
 memory and speed efficiency, and enable type safety and algebraic
 syntax.
 
-%package devel
+%package        devel
 Summary:        Development files for programs using the CLN library
-Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release} gmp-devel pkgconfig
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       gmp-devel%{?_isa}
 
-%description devel
+%description    devel
 A collection of C++ math classes and functions, which are designed for
 memory and speed efficiency, and enable type safety and algebraic
 syntax.
@@ -41,7 +38,6 @@ the CLN library.
 
 %prep
 %setup -q
-%patch1 -p0 -b .fix
 %patch2 -p1 -b .aarch64
 
 %build
@@ -51,10 +47,9 @@ make pdf
 make html
 
 %install
-rm -rf %{buildroot}
-make DESTDIR=%{buildroot} install
+%make_install
 
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
 rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
 
@@ -74,12 +69,10 @@ if [ "$1" = 0 ]; then
 fi
 
 %files
-%defattr(-,root,root)
 %doc COPYING NEWS README TODO
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/cln.pc
 %{_includedir}/cln/
@@ -87,6 +80,9 @@ fi
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Wed Oct 15 2014 Christopher Meng <rpm@cicku.me> - 1.3.4-1
+- Update to 1.3.4
+
 * Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
