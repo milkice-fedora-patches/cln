@@ -38,7 +38,7 @@ the CLN library.
 
 %prep
 %setup -q
-%patch2 -p1 -b .aarch64
+#patch2 -p1 -b .aarch64
 
 %build
 %configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
