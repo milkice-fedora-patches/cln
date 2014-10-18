@@ -8,6 +8,9 @@ Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 Patch2:         cln-add-aarch64.patch
 BuildRequires:  gmp-devel
 BuildRequires:  texi2html
+%if 0%{?fedora} && 0%{?fedora} > 20
+BuildRequires:  perl(Unicode::EastAsianWidth)
+%endif
 BuildRequires:  texinfo-tex
 Requires(post): /sbin/install-info
 Requires(preun):/sbin/install-info
