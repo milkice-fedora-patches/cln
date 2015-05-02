@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
@@ -81,6 +81,9 @@ fi
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 1.3.4-2
+- Rebuilt for GCC 5 C++11 ABI change
+
 * Wed Oct 15 2014 Christopher Meng <rpm@cicku.me> - 1.3.4-1
 - Update to 1.3.4
 
