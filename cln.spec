@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
@@ -81,6 +81,9 @@ fi
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3.4-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 1.3.4-2
 - Rebuilt for GCC 5 C++11 ABI change
 
