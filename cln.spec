@@ -5,6 +5,7 @@ Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
+BuildRequires:  gcc
 BuildRequires:  gmp-devel
 BuildRequires:  texi2html
 %if 0%{?fedora} && 0%{?fedora} > 20
