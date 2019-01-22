@@ -58,9 +58,7 @@ rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
 %check
 make %{_smp_mflags} check
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %post devel
 /sbin/install-info --section="Math" %{_infodir}/cln.info.gz %{_infodir}/dir 2>/dev/null || :
