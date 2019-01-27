@@ -12,8 +12,6 @@ BuildRequires:  texi2html
 BuildRequires:  perl(Unicode::EastAsianWidth)
 %endif
 BuildRequires:  texinfo-tex
-Requires(post): /sbin/install-info
-Requires(preun):/sbin/install-info
 
 %description
 A collection of C++ math classes and functions, which are designed for
@@ -59,14 +57,6 @@ rm -rf %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/pi.*
 make %{_smp_mflags} check
 
 %ldconfig_scriptlets
-
-%post devel
-/sbin/install-info --section="Math" %{_infodir}/cln.info.gz %{_infodir}/dir 2>/dev/null || :
-
-%preun devel
-if [ "$1" = 0 ]; then
-  /sbin/install-info --delete %{_infodir}/cln.info.gz %{_infodir}/dir 2>/dev/null || :
-fi
 
 %files
 %doc COPYING NEWS README TODO
