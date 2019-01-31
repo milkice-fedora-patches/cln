@@ -1,6 +1,6 @@
 Name:           cln
 Version:        1.3.4
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
@@ -70,6 +70,9 @@ make %{_smp_mflags} check
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.4-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Thu Jul 19 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 1.3.4-10
 - Add gcc-c++ as BR (fixes FTBFS)
 
