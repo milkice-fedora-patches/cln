@@ -12,6 +12,7 @@ BuildRequires:  texi2html
 BuildRequires:  perl(Unicode::EastAsianWidth)
 %endif
 BuildRequires:  texinfo-tex
+BuildRequires: make
 
 %description
 A collection of C++ math classes and functions, which are designed for
