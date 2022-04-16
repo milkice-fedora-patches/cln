@@ -1,10 +1,12 @@
 Name:           cln
 Version:        1.3.4
-Release:        17%{?dist}
+Release:        18%{?dist}
 Summary:        Class Library for Numbers
 License:        GPLv2+
 URL:            http://www.ginac.de/CLN/
 Source0:        http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
+# Adds definitions for RISC-V (riscv64)
+Patch0:         cln-1.3.4-riscv.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  texi2html
@@ -40,6 +42,7 @@ the CLN library.
 
 %prep
 %setup -q
+%patch0 -p1 -b .riscv~
 
 %build
 %configure --disable-static CXXFLAGS="%{XFLAGS}" CFLAGS="%{XFLAGS}"
@@ -71,6 +74,10 @@ make %{_smp_mflags} check
 %doc doc/cln.pdf doc/cln.html
 
 %changelog
+* Sat Apr 16 2022 Milkice Qiu <milkice@milkice.me> - 1.3.4-18
+- Add support for RISC-V (riscv64)
+- Patch from David Abdurachmanov <david.abdurachmanov@gmail.com>
+
 * Wed Jan 19 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.4-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
